@@ -3583,7 +3583,7 @@ GameObject:
   - component: {fileID: 4938469216974574235}
   - component: {fileID: 7020876662355165765}
   - component: {fileID: 7020876662355165764}
-  - component: {fileID: 7020876662355165766}
+  - component: {fileID: 7020876662355165763}
   - component: {fileID: 7020876662355165762}
   - component: {fileID: 7020876662355165761}
   m_Layer: 0
@@ -4063,8 +4063,22 @@ MonoBehaviour:
   _slipLimit: 0.3
   _reverseMult: 0.4
   _maxSpeedFOV: 200
-  _fov: {x: 40, y: 90}
+  _fov: {x: 40, y: 40}
   _debugTorque: 0
+--- !u!114 &7020876662355165763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3365501851024521472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b3e21422e254466810369536a65b19b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _accelerationPower: 1
+  _fireDelaySec: 1
 --- !u!64 &7020876662355165764
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4114,19 +4128,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &7020876662355165766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3365501851024521472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6213543e868e4a008eaa9de7f85ad61e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rotateSpeed: 1
 --- !u!4 &7021544945155242726
 Transform:
   m_ObjectHideFlags: 0
