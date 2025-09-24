@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3738793363961530379}
   - component: {fileID: 8136586193570938915}
   - component: {fileID: 4396924127847597833}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PinkBlock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 6176792235525041838}
   - component: {fileID: 4933337920059415785}
   - component: {fileID: 6722313222095489115}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PinkBlock (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 4748965562826608842}
   - component: {fileID: 7499646116904404924}
   - component: {fileID: 8005813855707697633}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PinkBlock (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 1065688934006218959}
   - component: {fileID: 8743626739365687164}
   - component: {fileID: 5104922078065509529}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PinkBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
