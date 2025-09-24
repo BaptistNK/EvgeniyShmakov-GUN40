@@ -213,7 +213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 58690683}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 68314692}
   - component: {fileID: 68314691}
   - component: {fileID: 68314690}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CianBlock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 78567350}
   - component: {fileID: 78567349}
   - component: {fileID: 78567348}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CianBlock (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -653,7 +653,7 @@ GameObject:
   - component: {fileID: 113721751}
   - component: {fileID: 113721750}
   - component: {fileID: 113721749}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CianBlock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -808,7 +808,7 @@ GameObject:
   - component: {fileID: 166976653}
   - component: {fileID: 166976652}
   - component: {fileID: 166976651}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CianBlock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1266,7 +1266,7 @@ GameObject:
   - component: {fileID: 260830064}
   - component: {fileID: 260830063}
   - component: {fileID: 260830062}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CianBlock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2232,7 +2232,7 @@ GameObject:
   - component: {fileID: 525975574}
   - component: {fileID: 525975573}
   - component: {fileID: 525975572}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CianBlock (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2365,7 +2365,7 @@ GameObject:
   - component: {fileID: 530703846}
   - component: {fileID: 530703845}
   - component: {fileID: 530703844}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CianBlock (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2710,7 +2710,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 585176034}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3135,6 +3135,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroundTrack
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 2afa5a1773ca1f84f98c062866a8be55, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 2afa5a1773ca1f84f98c062866a8be55, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 2afa5a1773ca1f84f98c062866a8be55, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100020, guid: 2afa5a1773ca1f84f98c062866a8be55, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2afa5a1773ca1f84f98c062866a8be55, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2
@@ -3387,7 +3403,7 @@ GameObject:
   - component: {fileID: 648732162}
   - component: {fileID: 648732161}
   - component: {fileID: 648732160}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CianBlock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3770,7 +3786,7 @@ GameObject:
   - component: {fileID: 707733068}
   - component: {fileID: 707733067}
   - component: {fileID: 707733066}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CianBlock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3976,7 +3992,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 716813856}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4079,7 +4095,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 725090865}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4424,7 +4440,7 @@ GameObject:
   - component: {fileID: 766957021}
   - component: {fileID: 766957020}
   - component: {fileID: 766957019}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CianBlock (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5751,8 +5767,6 @@ GameObject:
   - component: {fileID: 987081430}
   - component: {fileID: 987081434}
   - component: {fileID: 987081433}
-  - component: {fileID: 987081432}
-  - component: {fileID: 987081431}
   m_Layer: 5
   m_Name: Indicator
   m_TagString: Untagged
@@ -5785,155 +5799,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &987081431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 987081429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6930ba43920b41cea64622273a54e788, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _sum: {fileID: 0}
-  _currentPointsText: {fileID: 0}
-  _message: {fileID: 0}
-  _indicatorFill: {fileID: 0}
-  _tickerSum: {fileID: 0}
-  _indicatorUpdateClips: []
-  _indicatorGradient:
-    serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  _indicatorMaxPoints: 1000
-  _switchIndicatorVolume: 20
-  _overflowPointsPerSecond: 0.2
-  _maxSumFontSize: 45
-  _settings: {fileID: 0}
---- !u!82 &987081432
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 987081429}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &987081433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6239,7 +6104,7 @@ GameObject:
   - component: {fileID: 1027780331}
   - component: {fileID: 1027780330}
   - component: {fileID: 1027780329}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CianBlock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6370,7 +6235,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1032227810}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7323,7 +7188,7 @@ GameObject:
   - component: {fileID: 1252597237}
   - component: {fileID: 1252597236}
   - component: {fileID: 1252597235}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CianBlock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7665,7 +7530,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1312115584}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7720,7 +7585,7 @@ GameObject:
   - component: {fileID: 1326012653}
   - component: {fileID: 1326012652}
   - component: {fileID: 1326012651}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CianBlock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7856,7 +7721,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1366253954}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8100,8 +7965,6 @@ GameObject:
   - component: {fileID: 1476706417}
   - component: {fileID: 1476706421}
   - component: {fileID: 1476706420}
-  - component: {fileID: 1476706419}
-  - component: {fileID: 1476706418}
   m_Layer: 5
   m_Name: IndicatorBackground
   m_TagString: Untagged
@@ -8129,155 +7992,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 49}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1476706418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1476706416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6930ba43920b41cea64622273a54e788, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _sum: {fileID: 0}
-  _currentPointsText: {fileID: 0}
-  _message: {fileID: 0}
-  _indicatorFill: {fileID: 0}
-  _tickerSum: {fileID: 0}
-  _indicatorUpdateClips: []
-  _indicatorGradient:
-    serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  _indicatorMaxPoints: 1000
-  _switchIndicatorVolume: 20
-  _overflowPointsPerSecond: 0.2
-  _maxSumFontSize: 45
-  _settings: {fileID: 0}
---- !u!82 &1476706419
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1476706416}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &1476706420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8682,7 +8396,7 @@ GameObject:
   - component: {fileID: 1497248034}
   - component: {fileID: 1497248033}
   - component: {fileID: 1497248032}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CianBlock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9316,7 +9030,7 @@ GameObject:
   - component: {fileID: 1546406121}
   - component: {fileID: 1546406120}
   - component: {fileID: 1546406119}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CianBlock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9723,7 +9437,7 @@ GameObject:
   - component: {fileID: 1590733277}
   - component: {fileID: 1590733276}
   - component: {fileID: 1590733275}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CianBlock (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10915,7 +10629,7 @@ GameObject:
   - component: {fileID: 1816114412}
   - component: {fileID: 1816114411}
   - component: {fileID: 1816114410}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CianBlock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11803,7 +11517,7 @@ GameObject:
   - component: {fileID: 1993959607}
   - component: {fileID: 1993959606}
   - component: {fileID: 1993959605}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CianBlock (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12019,7 +11733,7 @@ GameObject:
   - component: {fileID: 2021619894}
   - component: {fileID: 2021619893}
   - component: {fileID: 2021619892}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CianBlock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12330,7 +12044,7 @@ GameObject:
   - component: {fileID: 2061989278}
   - component: {fileID: 2061989277}
   - component: {fileID: 2061989276}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CianBlock (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12525,7 +12239,7 @@ GameObject:
   - component: {fileID: 2073743357}
   - component: {fileID: 2073743356}
   - component: {fileID: 2073743355}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CianBlock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14174,9 +13888,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1856948761973571956, guid: e2a87214bbf8ef0428539f82dab84d7f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378811935605476378, guid: e2a87214bbf8ef0428539f82dab84d7f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2884190635914614278, guid: e2a87214bbf8ef0428539f82dab84d7f, type: 3}
       propertyPath: m_Name
       value: StartLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561810563809569450, guid: e2a87214bbf8ef0428539f82dab84d7f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
