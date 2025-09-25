@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Indicator
   m_EditorClassIdentifier: 
   <Settings>k__BackingField:
-  - Mult: 1
+  - Mult: 0.1
     Text: Wow!
     Clip: {fileID: 0}
-  - Mult: 2
+  - Mult: 0.2
     Text: Ohh!
     Clip: {fileID: 0}
   - Mult: 3
