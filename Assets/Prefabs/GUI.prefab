@@ -246,6 +246,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3047395792184129689}
   - {fileID: 2571773939710613201}
   - {fileID: 6380327979700322993}
   - {fileID: 399710869281465435}
@@ -886,7 +887,6 @@ RectTransform:
   m_LocalScale: {x: 2.0867546, y: 0.4574947, z: 0.68179}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3047395792184129689}
   - {fileID: 3476595561430877946}
   m_Father: {fileID: 1836602706798583193}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1348,17 +1348,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8563941320939986411}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4961772, y: 2.263196, z: 1.518649}
+  m_LocalScale: {x: 1.0354, y: 1.0354002, z: 1.0353997}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6380327979700322993}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.3960671, y: -78.68959}
-  m_SizeDelta: {x: 200, y: 50}
+  m_Father: {fileID: 1836602706798583193}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.4800005}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -134}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8942900430501777250
 CanvasRenderer:
@@ -1367,7 +1367,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8563941320939986411}
-  m_CullTransparentMesh: 0
+  m_CullTransparentMesh: 1
 --- !u!114 &2574197070712075526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1399,8 +1399,8 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
+  m_enableVertexGradient: 1
+  m_colorMode: 1
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
     topRight: {r: 1, g: 1, b: 1, a: 1}
@@ -1473,6 +1473,12 @@ Animation:
   - {fileID: 7400000, guid: 5619b438c8c03b849aec64015d5c55a2, type: 2}
   - {fileID: 7400000, guid: e73bd133f4a04d742815b8e14a006498, type: 2}
   - {fileID: 7400000, guid: e4cf82f5882c0ff49a906eee2bf77470, type: 2}
+  - {fileID: 7400000, guid: 2fe36bea69a10aa4ab20eaa5d9973acb, type: 2}
+  - {fileID: 7400000, guid: 736e81c6d7dfc1c488bb7286853bce3a, type: 2}
+  - {fileID: 7400000, guid: 5619b438c8c03b849aec64015d5c55a2, type: 2}
+  - {fileID: 7400000, guid: e73bd133f4a04d742815b8e14a006498, type: 2}
+  - {fileID: 7400000, guid: e4cf82f5882c0ff49a906eee2bf77470, type: 2}
+  - {fileID: 7400000, guid: 3c910d76222a42c47811e9fa9e6da6b3, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -1502,7 +1508,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9014968220703677707}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
