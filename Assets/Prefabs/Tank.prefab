@@ -275,14 +275,14 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.951
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 110
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -376,7 +376,7 @@ MonoBehaviour:
   _workingAudioClip: {fileID: 8300000, guid: 03bf91d88fce91c41995d27de63cc967, type: 3}
   _engineVolumeInterval: {x: 0.1, y: 0.7}
   _enginePitchInterval: {x: 0.6, y: 1.5}
-  _maxTankSpeed: 110
+  _maxTankSpeed: 60
 --- !u!1 &2612506499150228663
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +519,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8964106073494916162, guid: 3d210b2be9d4b9144b53828dfc2e73e3, type: 3}
 --- !u!114 &3073174321965893400
@@ -562,7 +562,7 @@ MonoBehaviour:
   _reverseMult: 0.4
   _maxSpeedFOV: 200
   _fov: {x: 40, y: 90}
-  _debugTorque: 0
+  _debugTorque: 1
 --- !u!82 &1924875507599857050
 AudioSource:
   m_ObjectHideFlags: 0
@@ -574,7 +574,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bd9566abdbf08834281bfb4ea8b92a5d, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
