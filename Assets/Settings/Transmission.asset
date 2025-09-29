@@ -40,7 +40,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 20
-      value: 500
+      value: 800
       inSlope: 0
       outSlope: 0
       tangentMode: 0
