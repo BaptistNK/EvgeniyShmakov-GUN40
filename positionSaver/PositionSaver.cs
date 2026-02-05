@@ -16,7 +16,6 @@ namespace DefaultNamespace
 
 		private TextAsset _json;
 
-		[SerializeField, HideInInspector]
 		public List<Data> Records { get; private set; }
 
 		private void Awake()
