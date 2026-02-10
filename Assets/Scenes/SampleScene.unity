@@ -422,7 +422,11 @@ Transform:
   m_GameObject: {fileID: 1693182624}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: -3.38, y: 2.15, z: 12.55}
+=======
+  m_LocalPosition: {x: -1.75, y: 2.1167753, z: 11.18}
+>>>>>>> f9aef712022122330ece8fcf3cf41e297ab9d17e
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -440,8 +444,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9666ac784e4149f8bfa323c3666015aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   _delay: 0.2
   _duration: 0.2
+=======
+>>>>>>> f9aef712022122330ece8fcf3cf41e297ab9d17e
 --- !u!114 &1693182631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,8 +461,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3226310a310541faa9835d4026986bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   _json: {fileID: 4900000, guid: 6f2f60b2b12778c41919b00220dd8d6b, type: 3}
   <Records>k__BackingField: []
+=======
+>>>>>>> f9aef712022122330ece8fcf3cf41e297ab9d17e
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
