@@ -1,6 +1,12 @@
 using UnityEngine;
-#if UNITY_EDITOR
 using UnityEditor;
-#endif
 
-public class ReadOnlyAttribute : PropertyAttribute { }
+public class ReadOnlyAttribute : PropertyAttribute 
+{
+    public string Tooltip { get; private set; }
+
+    public ReadOnlyAttribute(string tooltip = "")
+    {
+        Tooltip = tooltip;
+    }
+}

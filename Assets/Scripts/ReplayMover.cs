@@ -28,7 +28,7 @@ namespace DefaultNamespace
 
 		private void Update()
 		{
-			var curr = _save.Records[_index];			
+			var curr = _save.Records[_index];	
 			//todo comment: Что проверяет это условие (с какой целью)? 
 			//сравнение текущего игрового времени с временем из коллекции _save.Records.
 			//проверяет наступила ли очередь конкретной записи

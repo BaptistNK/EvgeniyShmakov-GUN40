@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEditor;
+using Unity.Collections;
 
 namespace DefaultNamespace
 {
@@ -16,6 +17,7 @@ namespace DefaultNamespace
 		}
 		
 		[Tooltip("Для заполнения этого поля нажмите правой кнопкой мыши по полю и выберите \"Create File\" в контекстном меню.")]
+		[ReadOnly]
 		[SerializeField] private TextAsset _json;
 
 		[field:SerializeField, HideInInspector]
