@@ -9,7 +9,7 @@ public class Mover : MonoBehaviour
 	private float _delayTime = 2f;
 	[SerializeField]
 	private Vector3[] _positions;
-
+	
 	private IEnumerator Start()
     {
 		if(_positions.Length < 2) yield break;
