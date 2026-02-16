@@ -1,34 +1,47 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 
 public class Mover : MonoBehaviour
 {
-	[SerializeField]
-	private float _moveTime = 1f;
-	[SerializeField]
-	private float _delayTime = 2f;
-	[SerializeField]
-	private Vector3[] _positions;
-	
-	private IEnumerator Start()
-    {
-		if(_positions.Length < 2) yield break;
-		int prev = 0, curr = 1;
-		var time = 0f;
-		var transform = this.transform;
-		while(true)
-		{
-			transform.position = Vector3.Lerp(_positions[prev], _positions[curr], time / _moveTime);
-			time += Time.deltaTime;
-			if(time >= _moveTime)
-			{
-				time = 0f;
-				prev = curr;
-				curr = (curr + 1) % _positions.Length;
-				yield return new WaitForSeconds(_delayTime);
-			}
+    public Vector3 _start = Vector3.zero;
+    public Vector3 _end = Vector3.right * 5f;
+    public float _speed = 1f;
+    public float _delay = 1f;
 
-			yield return null;
-		}
-	}
+
+    private void Start()
+    {
+        StartCoroutine(MoveLoop());
+    }
+
+    private IEnumerator MoveLoop()
+    {
+        bool isMovingToEnd = true;
+
+        while (true)  
+        {
+            Vector3 target = isMovingToEnd ? _end : _start;
+            Vector3 current = transform.position;
+
+            while (Vector3.Distance(transform.position, target) > 0.01f)
+            {
+                Vector3 direction = (target - transform.position).normalized;
+                transform.position += direction * _speed * Time.deltaTime;
+                yield return null;  
+            }
+
+            transform.position = target;
+
+            yield return new WaitForSeconds(_delay);
+
+            isMovingToEnd = !isMovingToEnd;
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(_start, 0.2f);
+        Gizmos.DrawSphere(_end, 0.2f);
+        Gizmos.DrawLine(_start, _end);
+    }
 }

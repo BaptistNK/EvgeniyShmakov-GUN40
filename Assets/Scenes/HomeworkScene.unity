@@ -584,6 +584,72 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098492764}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1195394577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1195394580}
+  - component: {fileID: 1195394579}
+  - component: {fileID: 1195394578}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1195394578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195394577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e4c8b7289f27c43aef9b2f05b979fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _start: {x: -12, y: 0, z: -23.98}
+  _end: {x: 12, y: 0, z: -23.98}
+  _speed: 10
+  _delay: 1
+--- !u!114 &1195394579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195394577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cfeea6c708c4d46a70d370982392bb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ballPrefab: {fileID: 7161863049035886314, guid: fecffe3aec8ad2b47acb43143e9e12dd, type: 3}
+  _startVelocity: 23
+  _lifetime: 5
+  _respawnDelay: 3
+--- !u!4 &1195394580
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195394577}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.78, y: 0, z: -23.98}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1729871103}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1203393317
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,7 +775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5f1559d63ce714c8a180537eb5eca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotate: {x: 0, y: 100, z: 0}
+  _rotate: {x: 0, y: 300, z: 0}
 --- !u!65 &1203393323
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -960,59 +1026,13 @@ GameObject:
   - component: {fileID: 1729871103}
   - component: {fileID: 1729871102}
   - component: {fileID: 1729871101}
-  - component: {fileID: 1729871100}
-  - component: {fileID: 1729871099}
-  - component: {fileID: 1729871104}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1729871099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1729871097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cfeea6c708c4d46a70d370982392bb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ballPrefab: {fileID: 6300980383366167156, guid: fecffe3aec8ad2b47acb43143e9e12dd, type: 3}
-  _startVelocity: 10
-  _lifetime: 5
-  _respawnDelay: 5
---- !u!54 &1729871100
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1729871097}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!23 &1729871101
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1071,29 +1091,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729871097}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.78, y: 1.12, z: -23.98}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4.168, y: 1, z: 1.7437}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1195394580}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1729871104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1729871097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44e4c8b7289f27c43aef9b2f05b979fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _start: {x: -12.11, y: 1.12, z: -23.98}
-  _end: {x: 11.77, y: 1.12, z: -23.98}
-  _speed: 10
-  _delay: 1
 --- !u!1 &1911662750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,7 +1203,7 @@ GameObject:
   - component: {fileID: 2012929637}
   - component: {fileID: 2012929636}
   - component: {fileID: 2012929635}
-  - component: {fileID: 2012929639}
+  - component: {fileID: 2012929638}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -1273,7 +1277,7 @@ Transform:
   - {fileID: 1203393318}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2012929639
+--- !u!114 &2012929638
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1282,12 +1286,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2012929633}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9d4e2e41c9d92940bec1f98b8ff97d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 44e4c8b7289f27c43aef9b2f05b979fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveTime: 1
-  _delayTime: 2
-  _positions: []
+  _start: {x: -8.64, y: 1.12, z: -5.06}
+  _end: {x: -2, y: 1.12, z: -5.06}
+  _speed: 1
+  _delay: 1
 --- !u!1 &2076126374
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,5 +1436,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 1911662752}
   - {fileID: 2084436961}
-  - {fileID: 1729871103}
   - {fileID: 2012929637}
+  - {fileID: 1195394580}
