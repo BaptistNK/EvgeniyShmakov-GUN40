@@ -24,8 +24,10 @@ public class Rotator : MonoBehaviour
     {
         while(true)
         {
-            transform.Rotate(_rotate*Time.deltaTime);
-            yield return null;
+            _rb.MoveRotation(_rb.rotation *
+            Quaternion.Euler(_rotate * Time.fixedDeltaTime));
+
+            yield return new WaitForFixedUpdate();
         }
     }
    

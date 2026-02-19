@@ -3,45 +3,63 @@ using System.Collections;
 
 public class Mover : MonoBehaviour
 {
-    public Vector3 _start = Vector3.zero;
-    public Vector3 _end = Vector3.right * 5f;
-    public float _speed = 1f;
-    public float _delay = 1f;
+    [SerializeField] private Vector3 _start;
+    [SerializeField] private Vector3 _end;
+    [SerializeField] private float _speed = 1f;
+    [SerializeField] private float _delay = 1f;
 
+    private Rigidbody _rigidbody;
 
     private void Start()
     {
+        _rigidbody = GetComponent<Rigidbody>();
+
+        if (_rigidbody == null)
+        {
+            Debug.LogError("Rigidbody is null");
+            return;
+        }
+
+        transform.position = _start;
         StartCoroutine(MoveLoop());
     }
 
     private IEnumerator MoveLoop()
     {
-        bool isMovingToEnd = true;
-
-        while (true)  
+        while (true)
         {
-            Vector3 target = isMovingToEnd ? _end : _start;
-            Vector3 current = transform.position;
-
-            while (Vector3.Distance(transform.position, target) > 0.01f)
-            {
-                Vector3 direction = (target - transform.position).normalized;
-                transform.position += direction * _speed * Time.deltaTime;
-                yield return null;  
-            }
-
-            transform.position = target;
+            yield return MoveToTarget(_end);
 
             yield return new WaitForSeconds(_delay);
 
-            isMovingToEnd = !isMovingToEnd;
+            yield return MoveToTarget(_start);
+
+            yield return new WaitForSeconds(_delay);
         }
     }
-    private void OnDrawGizmos()
+
+    private IEnumerator MoveToTarget(Vector3 target)
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawSphere(_start, 0.2f);
-        Gizmos.DrawSphere(_end, 0.2f);
-        Gizmos.DrawLine(_start, _end);
+        Vector3 startPosition = transform.position;
+        float distance = Vector3.Distance(startPosition, target);
+
+        if (distance < 0.01f)
+            yield break;
+
+        float duration = distance / _speed;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.fixedDeltaTime;
+            float t = Mathf.Clamp01(elapsedTime / duration);
+
+            Vector3 newPosition = Vector3.Lerp(startPosition, target, t);
+            _rigidbody.MovePosition(newPosition);
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        _rigidbody.MovePosition(target);
     }
 }
