@@ -5,7 +5,7 @@ using UnityEngine;
 public class Rotator : MonoBehaviour
 {
     [SerializeField]
-    private Vector3 _rotate = new Vector3(0f, 300f,0f);
+    private Vector3 _rotate = new Vector3(0f, 100f,0f);
     private Rigidbody _rb;
 
     void Start()
@@ -24,9 +24,8 @@ public class Rotator : MonoBehaviour
     {
         while(true)
         {
-            Quaternion rotation = Quaternion.Euler(_rotate*Time.deltaTime);
-            _rb.MoveRotation(_rb.rotation * rotation);
-        yield return null;
+            transform.Rotate(_rotate*Time.deltaTime);
+            yield return null;
         }
     }
    
