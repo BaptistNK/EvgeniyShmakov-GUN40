@@ -1,17 +1,18 @@
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 public class SceneController : MonoInstaller
 {
-    // Start is called before the first frame update
     public void OpenMainScene()
     {
-        
+        throw new NotImplementedException();
+        SceneManager.LoadScene(0);
     }
 
-    // Update is called once per frame
     public void OpenGameScene()
     {
-        
+        SceneManager.LoadScene(0);
     }
 }
