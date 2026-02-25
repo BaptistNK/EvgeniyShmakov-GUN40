@@ -8,7 +8,7 @@ public class SceneController : MonoInstaller
     public void OpenMainScene()
     {
         throw new NotImplementedException();
-        SceneManager.LoadScene(0);
+       // SceneManager.LoadScene(0);
     }
 
     public void OpenGameScene()
