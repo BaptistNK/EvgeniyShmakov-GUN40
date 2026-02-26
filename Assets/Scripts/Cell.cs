@@ -53,14 +53,4 @@ public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, I
         }
 
     }
-
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

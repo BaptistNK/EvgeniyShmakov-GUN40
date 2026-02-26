@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class CellManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static CellManager Instance;
+
+    void Awake()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnCellClicked(Vector3 cellPosition)
     {
-        
+        Debug.Log("Клетка нажата: " + cellPosition);
     }
 }
