@@ -921,6 +921,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 327768582}
+  - component: {fileID: 327768583}
   m_Layer: 0
   m_Name: CellManager
   m_TagString: Untagged
@@ -943,6 +944,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1393395272}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &327768583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327768581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c37adf12123e5e84195358bc9287825c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellTag: Cell
+  unitTag: Unit
 --- !u!1001 &348215865
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3396,10 +3411,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257799b7d52dcc845ab24e634061b487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restartInputName: Restart
-  restartDuration: 2
-  restartUI: {fileID: 843748739}
-  restartFillBar: {fileID: 1809738505}
 --- !u!4 &1074989002
 Transform:
   m_ObjectHideFlags: 0
@@ -5017,7 +5028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22400762, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0000038146973
+      value: 0.000049591064
       objectReference: {fileID: 0}
     - target: {fileID: 22426080, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5954,7 +5965,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6045697996219845468, guid: 4a32b5e411d1be946aaf8a70e7787e14, type: 3}
+      propertyPath: m_TagString
+      value: Unit
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

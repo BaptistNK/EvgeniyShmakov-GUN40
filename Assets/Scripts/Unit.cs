@@ -6,8 +6,34 @@ public class Unit : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, I
 {
     private Cell _currentCell;
     [SerializeField] private float _moveSpeed = 2f;
+    [SerializeField] private Cell cell;
     public event System.Action OnMoveEndCallback;
     private bool _isMoving = false;
+
+    public Cell Cell
+    {
+        get { return cell; }
+        private set { cell = value; }
+    }
+
+    public void SetCell(Cell newCell)
+    {
+        // Отвязываем от старой клетки, если была
+        if (cell != null && cell.Unit == this)
+        {
+            cell.Unit = null;
+        }
+
+        cell = newCell;
+
+        // Привязываем к новой клетке
+        if (newCell != null)
+        {
+            newCell.Unit = this;
+            // Перемещаем юнита на позицию клетки (чуть выше поверхности)
+            transform.position = newCell.transform.position + Vector3.up * 0.5f;
+        }
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {

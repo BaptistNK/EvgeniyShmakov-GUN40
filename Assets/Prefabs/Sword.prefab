@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 6379369730128269790}
   - component: {fileID: 1814576130678994308}
   - component: {fileID: 7998945229507557457}
-  - component: {fileID: 4180374312906065048}
-  - component: {fileID: 2034552590102009323}
+  - component: {fileID: -2663083499194164258}
   m_Layer: 0
   m_Name: Sword
-  m_TagString: Untagged
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +108,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4180374312906065048
+--- !u!114 &-2663083499194164258
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,15 +120,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b889971ec35ac84db09817864a9be70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2034552590102009323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6045697996219845468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b889971ec35ac84db09817864a9be70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _moveSpeed: 2
+  cell: {fileID: 3065679776449682639, guid: ec2a58d205e8aa94d900c70c0c818a1c, type: 3}

@@ -1,10 +1,24 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+
+public enum CellState
+{
+    None,
+    Selected,
+    CanMove,
+    CanAttack,
+    CanMoveAndAttack
+}
 
 public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
 {
     [SerializeField] private MeshRenderer _focusMesh;
     [SerializeField] private MeshRenderer _selectMesh;
+    [SerializeField] private CellState currentState = CellState.None;
+    public Unit Unit { get; set; } // Ссылка на юнит, стоящий на клетке
+
+    private Dictionary<NeighbourType, Cell> neighbours = new Dictionary<NeighbourType, Cell>();
 
     public event System.Action<Cell> OnPointerClickEvent;
 
@@ -37,8 +51,8 @@ public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, I
     }
 
     public void SetSelect(Material material)
-    {      
-        if(_selectMesh != null)
+    {
+        if (_selectMesh != null)
         {
             _selectMesh.enabled = true;
             _selectMesh.material = material;
@@ -53,4 +67,22 @@ public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, I
         }
 
     }
+
+    public void AddNeighbour(Cell neighbour, NeighbourType type)
+    {
+        if (!neighbours.ContainsKey(type))
+        {
+            neighbours[type] = neighbour;
+        }
+    }
+
+    public Cell GetNeighbour(NeighbourType type)
+    {
+        return neighbours.TryGetValue(type, out Cell neighbour) ? neighbour : null;
+    }
+
+    public List<Cell> GetAllNeighbours()
+    {
+        return new List<Cell>(neighbours.Values);
+    }    
 }
