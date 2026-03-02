@@ -1,18 +1,42 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
-public class Cell : MonoBehaviour
+public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    public event Action<Cell> OnPointerClickEvent;
+    [SerializeField] private MeshRenderer _focus;
+    [SerializeField] private MeshRenderer _select;
+
+    public void OnPointerClick(PointerEventData eventData)
     {
-        
+        OnPointerClickEvent.Invoke(this);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        
+        if(_focus != null)
+            _focus.enabled = true;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if(_focus != null)
+            _focus.enabled = false;
+    }
+
+    public void SetSelect(Material material)
+    {
+        if (_select != null)            
+            _select.enabled = true;
+            GetComponent<Renderer>().material = material;
+    }
+
+    public void ResetSelect()
+    {
+        _select.enabled = false;
     }
 }
