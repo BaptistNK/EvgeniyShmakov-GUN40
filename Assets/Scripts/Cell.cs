@@ -18,7 +18,7 @@ public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(_focus != null)
+        if (_focus != null)
             _focus.enabled = true;
     }
 
