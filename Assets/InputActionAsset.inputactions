@@ -3,30 +3,12 @@
     "maps": [
         {
             "name": "Action",
-            "id": "f845ff31-3180-4259-9bea-6c8255ae76a5",
+            "id": "f11a2284-28e7-4ddc-b23f-6c3f78979d8c",
             "actions": [
                 {
-                    "name": "Cancel",
+                    "name": "Restart",
                     "type": "Button",
-                    "id": "a75ec565-be30-4fe8-9a4d-e1678b2fe65f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Confirm",
-                    "type": "Button",
-                    "id": "a9619a99-e1b5-4e8a-81d5-23150f15b3b4",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Select",
-                    "type": "Button",
-                    "id": "8a67f5d3-964a-465d-9756-224ba80c993d",
+                    "id": "c6aa3392-ff94-434e-885a-da70958be5d4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -36,34 +18,12 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "efeaab6c-c226-4b56-b807-a2f85276f4d8",
-                    "path": "<Keyboard>/escape",
+                    "id": "48351922-8d79-44d7-9c92-8bb0048b5f35",
+                    "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4e9985f6-e4db-4f05-abdb-2d8cffdae328",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Confirm",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "04b98e81-9094-4cc0-81e0-feccabae1a63",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Select",
+                    "action": "Restart",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

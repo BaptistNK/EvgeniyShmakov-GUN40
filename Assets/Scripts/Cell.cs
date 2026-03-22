@@ -7,13 +7,14 @@ using UnityEngine.EventSystems;
 
 public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    public Unit Unit { get; set; }
     public event Action<Cell> OnPointerClickEvent;
     [SerializeField] private MeshRenderer _focus;
     [SerializeField] private MeshRenderer _select;
-
+    private Dictionary<NeighbourType, Cell> _neighbours = new Dictionary<NeighbourType, Cell>();
     public void OnPointerClick(PointerEventData eventData)
     {
-        OnPointerClickEvent.Invoke(this);
+        OnPointerClickEvent?.Invoke(this);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -38,5 +39,22 @@ public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public void ResetSelect()
     {
         _select.enabled = false;
+    }
+
+    public void AddNeighbour(NeighbourType type,  Cell neighbour)
+    {
+        if(!_neighbours.ContainsKey(type))
+        {
+            _neighbours[type] = neighbour;
+        }
+        else
+        {
+            Debug.LogWarning($"Клетка уже имеет соседа типа {type}!");
+        }
+    }
+
+    public Cell GetNeighbour(NeighbourType type)
+    {
+        return _neighbours.TryGetValue(type, out var cell) ? cell : null;
     }
 }

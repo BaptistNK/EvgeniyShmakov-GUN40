@@ -1,18 +1,31 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Unit : MonoBehaviour
+public class Unit : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    public Cell Cell { get; set; }
+
+    private Action OnMoveEndCallback;
+    public void OnPointerClick(PointerEventData eventData)
     {
-        
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        
+        throw new System.NotImplementedException();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    void Move(Cell cell)
+    {
+
     }
 }
