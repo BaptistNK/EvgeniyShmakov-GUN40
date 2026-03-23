@@ -31,9 +31,11 @@ public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void SetSelect(Material material)
     {
-        if (_select != null)            
+        if (_select != null)
+        { 
             _select.enabled = true;
             GetComponent<Renderer>().material = material;
+        }
     }
 
     public void ResetSelect()

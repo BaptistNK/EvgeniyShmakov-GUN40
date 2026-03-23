@@ -6,26 +6,50 @@ using UnityEngine.EventSystems;
 
 public class Unit : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
 {
-    public Cell Cell { get; set; }
+    public Cell Cell { get; private set; }
 
-    private Action OnMoveEndCallback;
+    private Action<Cell> OnMoveEndCallback;
+
+    public void SetSelect(Cell cell)
+    {
+        if(Cell!=null)
+            Cell.ResetSelect();
+
+        Cell=cell;
+        if (Cell != null && cell.Unit != this) 
+            cell.Unit=this;
+    }
     public void OnPointerClick(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        if (Cell != null)
+        {
+            Debug.Log($"Клик по юниту на клетке: {Cell.gameObject.name}");
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        if (Cell != null)
+        {
+            Cell.SetSelect(Resources.Load<Material>("HighlightMaterial"));
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        if (Cell != null)
+        {
+            Cell.ResetSelect();
+        }
     }
 
-    void Move(Cell cell)
+    public void Move(Cell cell)
     {
-
+        if (cell == null || cell.Unit != null) return;
+        var startCell = Cell;
+        SetSelect(cell);
+        transform.position = cell.transform.position;
+        startCell?.ResetSelect();
+        OnMoveEndCallback?.Invoke(cell);
     }
 }

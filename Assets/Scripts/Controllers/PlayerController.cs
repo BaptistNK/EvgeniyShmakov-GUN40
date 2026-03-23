@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private InputBlock _inputBlock;
+    [SerializeField] private Unit _unit;
+
+    /*public IEnumerator Move(Unit unit, Cell cell)
+    {
+        _inputBlock.SetInputBlocked(true);
+        yield return _unit.Move(unit, cell);
+    }*/
     void Start()
     {
         
