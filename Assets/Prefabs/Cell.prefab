@@ -332,5 +332,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d3f211518dd34d4c842d11b83eae329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _focus: {fileID: 6715545663696678327}
-  _select: {fileID: 1512271870218152161}
+  cellRenderer: {fileID: 8544126320944098606}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}

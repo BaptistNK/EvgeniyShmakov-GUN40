@@ -1,55 +1,66 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Unit : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
+public class Unit : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    public Cell Cell { get; private set; }
+    [SerializeField] private Renderer unitRenderer;
+    [SerializeField] private Color selectedColor = Color.green;
 
-    private Action<Cell> OnMoveEndCallback;
+    public Cell CurrentCell { get; private set; }
+    public bool IsWhite { get; private set; }
+    public bool IsKing { get; set; }
 
-    public void SetSelect(Cell cell)
+    private Color defaultColor;
+    private bool isSelected = false;
+
+    public void Initialize(bool isWhite)
     {
-        if(Cell!=null)
-            Cell.ResetSelect();
-
-        Cell=cell;
-        if (Cell != null && cell.Unit != this) 
-            cell.Unit=this;
+        IsWhite = isWhite;
+        defaultColor = unitRenderer?.material.color ?? Color.white;
     }
-    public void OnPointerClick(PointerEventData eventData)
+
+    public void SetCell(Cell cell)
     {
-        if (Cell != null)
+        CurrentCell = cell;
+        // Обновляем позицию объекта, чтобы он находился над клеткой
+        if (cell != null)
         {
-            Debug.Log($"Клик по юниту на клетке: {Cell.gameObject.name}");
+            transform.position = cell.transform.position + new Vector3(0, 0.5f, 0);
         }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (Cell != null)
+        if (!isSelected && unitRenderer != null)
         {
-            Cell.SetSelect(Resources.Load<Material>("HighlightMaterial"));
+            unitRenderer.material.color = selectedColor;
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (Cell != null)
+        if (!isSelected && unitRenderer != null)
         {
-            Cell.ResetSelect();
+            unitRenderer.material.color = defaultColor;
         }
     }
 
-    public void Move(Cell cell)
+    public void OnPointerClick(PointerEventData eventData)
     {
-        if (cell == null || cell.Unit != null) return;
-        var startCell = Cell;
-        SetSelect(cell);
-        transform.position = cell.transform.position;
-        startCell?.ResetSelect();
-        OnMoveEndCallback?.Invoke(cell);
+        BattleController.Instance?.HandleUnitClick(this);
+    }
+
+    public void Select()
+    {
+        isSelected = true;
+        if (unitRenderer != null)
+            unitRenderer.material.color = selectedColor;
+    }
+
+    public void Deselect()
+    {
+        isSelected = false;
+        if (unitRenderer != null)
+            unitRenderer.material.color = defaultColor;
     }
 }

@@ -1,62 +1,53 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    public Unit Unit { get; set; }
-    public event Action<Cell> OnPointerClickEvent;
-    [SerializeField] private MeshRenderer _focus;
-    [SerializeField] private MeshRenderer _select;
-    private Dictionary<NeighbourType, Cell> _neighbours = new Dictionary<NeighbourType, Cell>();
-    public void OnPointerClick(PointerEventData eventData)
+    [SerializeField] private Renderer cellRenderer;
+    [SerializeField] private Color defaultColor = Color.white;
+    [SerializeField] private Color highlightedColor = Color.yellow;
+
+    public Unit UnitOnCell { get; private set; }
+    public Vector2Int GridPosition { get; set; }
+    private bool isHighlighted = false;
+
+    public void SetUnit(Unit unit)
     {
-        OnPointerClickEvent?.Invoke(this);
+        UnitOnCell = unit;
+        if (unit != null)
+            unit.SetCell(this);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (_focus != null)
-            _focus.enabled = true;
+        if (!isHighlighted && UnitOnCell == null && cellRenderer != null)
+        {
+            Highlight();
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if(_focus != null)
-            _focus.enabled = false;
-    }
-
-    public void SetSelect(Material material)
-    {
-        if (_select != null)
-        { 
-            _select.enabled = true;
-            GetComponent<Renderer>().material = material;
-        }
-    }
-
-    public void ResetSelect()
-    {
-        _select.enabled = false;
-    }
-
-    public void AddNeighbour(NeighbourType type,  Cell neighbour)
-    {
-        if(!_neighbours.ContainsKey(type))
+        if (isHighlighted)
         {
-            _neighbours[type] = neighbour;
-        }
-        else
-        {
-            Debug.LogWarning($"Клетка уже имеет соседа типа {type}!");
+            RemoveHighlight();
         }
     }
 
-    public Cell GetNeighbour(NeighbourType type)
+    public void OnPointerClick(PointerEventData eventData)
     {
-        return _neighbours.TryGetValue(type, out var cell) ? cell : null;
+        BattleController.Instance?.HandleCellClick(this);
+    }
+
+    public void Highlight()
+    {
+        isHighlighted = true;
+        cellRenderer.material.color = highlightedColor;
+    }
+
+    public void RemoveHighlight()
+    {
+        isHighlighted = false;
+        cellRenderer.material.color = defaultColor;
     }
 }
