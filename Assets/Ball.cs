@@ -4,56 +4,155 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    Rigidbody _rb;
-    [SerializeField] GameObject floor;
-    [SerializeField] float magnitude = 5f;
-
+    [SerializeField] float _inpulseForce;
+    public Rigidbody _rb;
     private RaycastHit hit;
-    private bool hasHit;
+    public bool isInPlay = false;
+    Vector3 _targetImpulse;
+    private int currentThrowInFrame = 1;
+    private FrameManager frameManager;
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();        
+        frameManager = FindObjectOfType<FrameManager>();
+
+        isInPlay = true;
+    }
+
+    public void Launch(Vector3 force)
+    {
+        if (isInPlay)
+        {
+            _rb.AddForce(force, ForceMode.Impulse);
+        }
     }
 
     void Update()
     {
-        Vector3 _mousePos = GetDirectionToMouse();
-        if (Input.GetMouseButton(0))
+        if (isInPlay && Input.GetMouseButtonDown(0))
         {
-            _rb.AddForce(_mousePos);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit))
+            {
+                _targetImpulse = (hit.point - transform.position).normalized;
+                _targetImpulse.y = 0;
+                _targetImpulse.Normalize();
+
+                Vector3 _totalImpulse = _targetImpulse * _inpulseForce;
+                Launch(_totalImpulse);
+                isInPlay = false; 
+            }
         }
     }
 
-    Vector3 GetDirectionToMouse()
+    private void OnCollisionEnter(Collision collision)
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (!isInPlay) return;
 
-        hasHit = Physics.Raycast(ray, out hit, Mathf.Infinity,
-            LayerMask.GetMask("floor"));
-        float hitDistance = 0f;
-        if (hasHit)
+        if(collision.gameObject.CompareTag("Pin"))
         {
-            Vector3 targetPoint = ray.GetPoint(hitDistance);
-            Vector3 directionToMouse = targetPoint - transform.position;
-            directionToMouse.y = 0f;
-            if (directionToMouse != Vector3.zero)
+            Debug.Log($"Шар столкнулся с кеглей");
+            HandlePinCollision(collision);
+        }
+        else if(collision.gameObject.CompareTag("Wall"))
+        {
+            if(_rb.velocity.magnitude < 0.1f)
             {
-                directionToMouse.Normalize();
+                StartCoroutine(WaitForBallStop());
+            }
+        }
+    }
+    private void HandlePinCollision(Collision collision)
+    {
+        if (_rb == null)
+        {
+            _rb = GetComponent<Rigidbody>();
+            if (_rb == null) return;
+        }
+
+        if (!isInPlay) return;
+
+        if (frameManager == null || GameManager.Instance == null)
+        {
+            Debug.LogError("Зависимости не инициализированы!");
+            return;
+        }
+
+        Debug.Log($"Обработка столкновения с кеглей. Скорость шара: {_rb.velocity.magnitude:F3}");
+
+        
+        if (_rb.velocity.magnitude < 0.1f)
+        {
+            ProcessBallStop(collision);
+        }
+        else
+        {
+            StartCoroutine(WaitForBallStop());
+        }
+    }
+
+
+    private void ProcessBallStop(Collision collision)
+    {
+        isInPlay = false;
+
+        int fallenCount = GameManager.Instance.GetFallenPinCounts();
+        Debug.Log($"Сбито кеглей: {fallenCount}");
+
+        frameManager.RegisterThrow(fallenCount);
+    }
+
+
+    public void ResetForNextThrow(int throwNumber)
+    {
+        isInPlay = true;
+        currentThrowInFrame = throwNumber; 
+        Debug.Log($"Шар готов к броску №{currentThrowInFrame}");
+    }
+
+
+    private IEnumerator WaitForBallStop()
+    {
+        yield return new WaitForSeconds(1.5f); // Ждём 1.5 с после столкновения
+
+        if (_rb.velocity.magnitude < 0.1f && isInPlay)
+        {
+            ProcessBallStop(null); // Передаём null, так как столкновение уже произошло
+        }
+    }
+
+
+    private IEnumerator CheckStopAndRegisterThrow()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        if (_rb.velocity.magnitude < 0.1f && isInPlay)
+        {
+            isInPlay = false;
+
+            if (GameManager.Instance == null)
+            {
+                Debug.LogError("GameManager не инициализирован!");
+                yield break;
             }
 
-            return directionToMouse;
-        }
+            int fallenCount = GameManager.Instance.GetFallenPinCounts();
+            Debug.Log($"Сбито кеглей: {fallenCount}");
 
-        return Vector3.zero;
-    }
+            if (frameManager != null && !frameManager.IsFrameComplete())
+            {
+                frameManager.RegisterThrow(fallenCount);
+            }
+            else
+            {
+                Debug.LogWarning("Фрейм уже завершён. Бросок игнорирован");
+            }
 
-    void OnDrawGizmos()
-    {
-        if (hasHit)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(Camera.main.transform.position, hit.point);
-            Gizmos.DrawWireSphere(hit.point, 0.1f);
+            if (!frameManager.IsGameOver())
+            {
+                GameManager.Instance.ResetAllPins();
+            }
         }
     }
 }
