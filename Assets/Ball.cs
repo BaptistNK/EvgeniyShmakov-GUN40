@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ball : MonoBehaviour
 {
@@ -16,7 +18,7 @@ public class Ball : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();        
         frameManager = FindObjectOfType<FrameManager>();
-
+        
         isInPlay = true;
     }
 
@@ -48,20 +50,17 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!isInPlay) return;
-
-        if(collision.gameObject.CompareTag("Pin"))
+        /*if(collision.gameObject.CompareTag("Pin"))
         {
             Debug.Log($"Шар столкнулся с кеглей");
             HandlePinCollision(collision);
         }
-        else if(collision.gameObject.CompareTag("Wall"))
+        else */if(collision.gameObject.CompareTag("Wall"))
         {
-            if(_rb.velocity.magnitude < 0.1f)
-            {
-                StartCoroutine(WaitForBallStop());
-            }
+            Debug.Log($"запуск корутины");
+            StartCoroutine(WaitForBallStop());            
         }
+        if (!isInPlay) return;
     }
     private void HandlePinCollision(Collision collision)
     {
@@ -79,8 +78,6 @@ public class Ball : MonoBehaviour
             return;
         }
 
-        Debug.Log($"Обработка столкновения с кеглей. Скорость шара: {_rb.velocity.magnitude:F3}");
-
         
         if (_rb.velocity.magnitude < 0.1f)
         {
@@ -95,6 +92,8 @@ public class Ball : MonoBehaviour
 
     private void ProcessBallStop(Collision collision)
     {
+        Debug.Log("ProcessBallStop вызван. Сбито кеглей: " + GameManager.Instance.GetFallenPinCounts());
+
         isInPlay = false;
 
         int fallenCount = GameManager.Instance.GetFallenPinCounts();
@@ -114,45 +113,20 @@ public class Ball : MonoBehaviour
 
     private IEnumerator WaitForBallStop()
     {
-        yield return new WaitForSeconds(1.5f); // Ждём 1.5 с после столкновения
+        Debug.Log("WaitForBallStop: запуск корутины ожидания остановки шара.");
+        _rb.velocity = Vector3.zero;
+        yield return new WaitForSeconds(1.5f); 
 
-        if (_rb.velocity.magnitude < 0.1f && isInPlay)
+        if (_rb.velocity.magnitude < 0.1f && !isInPlay)
         {
-            ProcessBallStop(null); // Передаём null, так как столкновение уже произошло
+            Debug.Log("WaitForBallStop: шар остановился. Вызов ProcessBallStop.");
+
+            ProcessBallStop(null);
         }
-    }
-
-
-    private IEnumerator CheckStopAndRegisterThrow()
-    {
-        yield return new WaitForSeconds(0.5f);
-
-        if (_rb.velocity.magnitude < 0.1f && isInPlay)
+        else
         {
-            isInPlay = false;
-
-            if (GameManager.Instance == null)
-            {
-                Debug.LogError("GameManager не инициализирован!");
-                yield break;
-            }
-
-            int fallenCount = GameManager.Instance.GetFallenPinCounts();
-            Debug.Log($"Сбито кеглей: {fallenCount}");
-
-            if (frameManager != null && !frameManager.IsFrameComplete())
-            {
-                frameManager.RegisterThrow(fallenCount);
-            }
-            else
-            {
-                Debug.LogWarning("Фрейм уже завершён. Бросок игнорирован");
-            }
-
-            if (!frameManager.IsGameOver())
-            {
-                GameManager.Instance.ResetAllPins();
-            }
+            Debug.Log($"WaitForBallStop: шар ещё движется. Скорость: {_rb.velocity.magnitude}. Повторная проверка.");
+            StartCoroutine(WaitForBallStop());
         }
-    }
+    }    
 }

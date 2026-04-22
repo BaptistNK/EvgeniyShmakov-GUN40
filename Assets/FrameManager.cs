@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System;
 
 public class FrameManager : MonoBehaviour
 {
@@ -14,6 +12,13 @@ public class FrameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI statusText;
     [SerializeField] private GameObject ballPrefab;
     [SerializeField] private Transform ballSpawnPoint;
+    [SerializeField] private GameObject pinPrefab;          // Префаб кегли
+    [SerializeField] private Transform pinsSpawnPoint;       // Точка спавна 
+    [SerializeField] private List<GameObject> currentPins = new List<GameObject>(); // Список созданных кеглей
+    [SerializeField] private bool isSpawnPointSet = false;    // Флаг: точка спавна установлена?
+    [SerializeField] private Vector3 customSpawnPoint;         // Координаты выбранной точки спавна
+    [SerializeField] private GameObject spawnPointIndicator;     // Визуальный индикатор точки спавна (опционально)
+
     private GameObject currentBall;
 
     private int currentFrame = 1;
@@ -27,7 +32,7 @@ public class FrameManager : MonoBehaviour
 
     void Start()
     {
-        SpawnNewBall();
+        SpawnPins();
         UpdateUIFrame();
         UpdateUIScore();
         SetInitialFrameStatus();
@@ -66,7 +71,13 @@ public class FrameManager : MonoBehaviour
             UpdateStatusText("Игра завершена! Финальный счёт: " + totalScore);
             return;
         }
+        Debug.Log($"Начинаем фрейм {currentFrame}. Сброс кеглей...");
+        GameManager.Instance.ResetAllPins();
 
+        isSpawnPointSet = false;
+        customSpawnPoint = Vector3.zero;
+
+        SpawnPins();
         SpawnNewBall();
 
         currentFrame++;
@@ -86,18 +97,65 @@ public class FrameManager : MonoBehaviour
         if(isTenthFrame)
         {
             return currentThrow <= (extraThrowInTenth ? 3 : 2);
+
         }
         else
         {
             return currentThrow <= 2;
         }
     }
-
-    public void SpawnNewBall()
+    private void SetSpawnPointFromClick()
     {
-        if (ballSpawnPoint == null)
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        // Проверяем, попал ли луч в коллайдер с тегом "floor"
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity,
+            LayerMask.GetMask("floor"))) 
         {
-            Debug.LogError("ballSpawnPoint не назначен в инспекторе!");
+            customSpawnPoint = hit.point;
+            customSpawnPoint.y += 0.8f;
+            isSpawnPointSet = true;
+
+            // Показываем индикатор точки спавна (если назначен префаб)
+            if (spawnPointIndicator != null)
+            {
+                GameObject indicator = Instantiate(spawnPointIndicator, customSpawnPoint, Quaternion.identity);
+                // Можно добавить таймер уничтожения индикатора через 3 секунды
+                Destroy(indicator, 3f);
+            }
+
+            Debug.Log($"Точка спавна шара установлена: {customSpawnPoint}");
+            SpawnNewBall();
+            UpdateStatusText("Точка спавна шара установлена. Готов к броску.");
+        }
+        else
+        {
+            UpdateStatusText("Кликните на дорожке, чтобы установить точку спавна шара.");
+            
+        }
+    }
+    private void SpawnNewBall()
+    {
+        Vector3 spawnPosition;
+        // Если точка спавна установлена кликом — используем её
+        if (isSpawnPointSet)
+        {
+            spawnPosition = customSpawnPoint;
+        }
+        // Иначе используем точку из инспектора (если назначена)
+        /*else if (ballSpawnPoint != null)
+        {
+            spawnPosition = ballSpawnPoint.position;
+        }*/
+        else
+        {
+            Destroy(currentBall);
+            return;
+        }
+        if (ballSpawnPoint == null && !isSpawnPointSet)
+        {
+            Debug.LogError("ballSpawnPoint не назначен в инспекторе, и точка спавна не установлена кликом!");
             return;
         }
 
@@ -106,7 +164,7 @@ public class FrameManager : MonoBehaviour
             Destroy(currentBall);
         }
 
-        currentBall = Instantiate(ballPrefab, ballSpawnPoint.position, Quaternion.identity);
+        currentBall = Instantiate(ballPrefab, spawnPosition, Quaternion.identity);
         ball = currentBall.GetComponent<Ball>();
 
         Rigidbody rb = currentBall.GetComponent<Rigidbody>();
@@ -118,15 +176,18 @@ public class FrameManager : MonoBehaviour
         ball.ResetForNextThrow(currentThrow);
     }
 
-
-
-
     private void ProceedToNextThrow()
     {
-        currentThrow++;
+            currentThrow++;
 
         if (CanMakeThrow())
         {
+            // Если точка спавна ещё не установлена, ждём клика
+            if (!isSpawnPointSet)
+            {
+                UpdateStatusText("Кликните на дорожке, чтобы установить точку спавна шара.");
+                return;
+            }
             SpawnNewBall();
             UpdateStatusText($"Бросок {currentThrow}. Готов к броску.");
         }
@@ -146,11 +207,21 @@ public class FrameManager : MonoBehaviour
         UpdateUIScore();
     }
 
+    void Update()
+    {
+        // Если точка спавна ещё не установлена и игрок кликнул левой кнопкой мыши
+        if (!isSpawnPointSet && Input.GetMouseButtonDown(0))
+        {
+            SetSpawnPointFromClick();
+        }
+    }
 
 
     public void RegisterThrow(int pinsKnocked)
     {
-        throws.Add(pinsKnocked);
+        Debug.Log($"RegisterThrow вызван. Сбито: {pinsKnocked}, текущий бросок: {currentThrow}, фрейм: {currentFrame}");
+
+        throws.Add(pinsKnocked);            
         CalculateScore(pinsKnocked);
 
         string statusMessage = DetermineFrameStatus(pinsKnocked);
@@ -172,7 +243,7 @@ public class FrameManager : MonoBehaviour
                 extraThrowInTenth = true;
             }
         }
-        ProceedToNextThrow();
+        ProceedToNextThrow();        
     }
 
     string DetermineFrameStatus(int pinsKnocked)
@@ -286,6 +357,52 @@ public class FrameManager : MonoBehaviour
         else
         {
             UpdateStatusText("Готов к дополнительному броску в 10‑м фрейме");
+        }
+    }
+    private void SpawnPins()
+    {
+        // Удаляем старые кегли, если они есть
+        foreach (var pin in currentPins)
+        {
+            if (pin != null)
+                Destroy(pin);
+        }
+        currentPins.Clear();
+
+        // Проверяем, назначена ли точка спавна
+        if (pinsSpawnPoint == null)
+        {
+            Debug.LogError("pinsSpawnPoint не назначен в инспекторе!");
+            return;
+        }
+
+        // Создаём 10 кеглей (стандартный набор)
+        for (int i = 0; i < 10; i++)
+        {
+            // Рассчитываем позицию для каждой кегли (треугольная расстановка)
+            Vector3 spawnPosition = CalculatePinPosition(i, pinsSpawnPoint.position);
+            GameObject newPin = Instantiate(pinPrefab, spawnPosition, Quaternion.identity);
+            currentPins.Add(newPin);
+        }
+    }
+
+    private Vector3 CalculatePinPosition(int pinIndex, Vector3 basePosition)
+    {
+        float spacing = 0.7f; // Расстояние между кеглями
+
+        switch (pinIndex)
+        {
+            case 0: return basePosition + new Vector3(0, 0, 0);
+            case 1: return basePosition + new Vector3(-spacing, 0, spacing);
+            case 2: return basePosition + new Vector3(spacing, 0, spacing);
+            case 3: return basePosition + new Vector3(-2 * spacing, 0, 2 * spacing);
+            case 4: return basePosition + new Vector3(0, 0, 2 * spacing);
+            case 5: return basePosition + new Vector3(2 * spacing, 0, 2 * spacing);
+            case 6: return basePosition + new Vector3(-3 * spacing, 0, 3 * spacing);
+            case 7: return basePosition + new Vector3(-spacing, 0, 3 * spacing);
+            case 8: return basePosition + new Vector3(spacing, 0, 3 * spacing);
+            case 9: return basePosition + new Vector3(3 * spacing, 0, 3 * spacing);
+            default: return basePosition;
         }
     }
 

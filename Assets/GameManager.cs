@@ -8,27 +8,15 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [Header("Настройка кеглей")]
     public List<Pin> allPins = new List<Pin>();
     [SerializeField] private int totalPins = 10;
     private int fallenPinsCount = 0;
     private HashSet<Pin> fallenPinsSet = new HashSet<Pin>();
-    [SerializeField] private TextMeshProUGUI KnockedText;
 
     private void Awake()
     {
         Instance = this;
-    }
-    void InitializePins()
-    {
-        Pin[] pins = FindObjectsOfType<Pin>();
-        allPins.Clear();
-        foreach (Pin pin in pins)
-        {
-            allPins.Add(pin);
-        }
-        Debug.Log($"Найдено кеглей: {allPins.Count}");
-    }
+    }   
 
     public void RegisterFallenPin(Pin fallenPin)
     {
@@ -43,7 +31,6 @@ public class GameManager : MonoBehaviour
     private void UpdateScoreDisplay()
     {
         Debug.Log($"Сбито кеглей: {fallenPinsCount} / {totalPins}");
-        KnockedText.text = $"Score: {fallenPinsCount}";
     }
 
     public void ResetAllPins()
