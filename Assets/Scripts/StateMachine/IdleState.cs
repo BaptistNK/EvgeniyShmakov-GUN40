@@ -1,26 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class IdleState : StateMachineBehaviour
+public class IdleState : IState
 {
-    float _timer;
-    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        var agent = animator.GetComponent<UnityEngine.AI.NavMeshAgent>();
-        if (agent != null)
-        {
-            agent.isStopped = true;
-            agent.velocity = Vector3.zero;
-        }
+    private float _timer;
+    private const float _delay = 5f;
+    private StateControllerAI _controller;
+    public IdleState(StateControllerAI controller) => _controller = controller;
+    public void Enter()
+    { 
+        Debug.Log("Enter to Idle");
+        _timer = 0f;
     }
+    public void Exit() { }
 
-    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+
+    // Update is called once per frame
+    public void Update()
     {
         _timer += Time.deltaTime;
-        if( _timer >= 5f )
+        if(_timer>=_delay)
         {
-            animator.Play("Search");
+            SwitchState();
         }
+    }
+    void SwitchState()
+    {
+        _controller.ChangeState(new SearchState(_controller));
     }
 }

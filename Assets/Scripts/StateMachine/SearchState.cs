@@ -1,55 +1,66 @@
-using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Net.WebSockets;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class SearchState : StateMachineBehaviour
+public class SearchState : IState
 {
-    private BotBrain brain;
+    private StateControllerAI _controller;
+    private float _searchRadius = 5f;
+    private float _patrolRadius = 20f;
+    private float _searchInterval = 0.5f;
+    private float _timer;
+    public SearchState(StateControllerAI controller) => _controller = controller;
 
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public void Enter()
     {
-        brain = animator.GetComponent<BotBrain>();
-
-        // Проверяем, назначен ли агент, если нет — пробуем найти его
-        if (brain != null && brain.agent == null)
-            brain.agent = animator.GetComponent<NavMeshAgent>();
-
-        if (brain != null && brain.agent != null)
-            MoveToRandomPos(brain);
+        Debug.Log("Search object...");
+        MoveToRandomPoint();
     }
 
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+
+    public void Exit() 
+    { 
+        if(_controller.agent.hasPath)
+            _controller.agent.ResetPath();
+    }
+
+    public void Update()
     {
-        if (brain == null || brain.agent == null) return;
-
-        // Если бот дошел до точки — выбираем новую
-        if (!brain.agent.pathPending && brain.agent.remainingDistance < 0.5f)
+        if(!_controller.agent.pathPending && _controller.agent.remainingDistance < 0.5f)
         {
-            MoveToRandomPos(brain);
+            MoveToRandomPoint();
         }
-
-        // Поиск целей
-        Collider[] targets = Physics.OverlapSphere(brain.transform.position, brain.viewRadius, brain.targetMask);
-        if (targets.Length > 0)
+        _timer += Time.deltaTime;
+        if( _timer >= _searchInterval)
         {
-            // ИСПРАВЛЕНО: берем ТРАНСФОРМ первого элемента массива [0]
-            brain.currentTarget = targets[0].transform;
-            animator.SetBool("FoundTarget", true);
+            _timer = 0f;
+            CheckForItems();
         }
     }
 
-    void MoveToRandomPos(BotBrain brain)
+    private void MoveToRandomPoint()
     {
-        if (brain.agent == null) return;
-
-        Vector3 randomPos = UnityEngine.Random.insideUnitSphere * 10f;
-        randomPos += brain.transform.position;
-
+        Vector3 _randomDirection = Random.insideUnitSphere * _patrolRadius;
+        _randomDirection += _controller.transform.position;
         NavMeshHit hit;
-        // Ищем ближайшую точку на NavMesh в радиусе 10 метров
-        if (NavMesh.SamplePosition(randomPos, out hit, 10f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(_randomDirection, out hit, _patrolRadius, 1))
         {
-            brain.agent.SetDestination(hit.position);
+            _controller.agent.SetDestination(hit.position);
+        }
+    }
+
+    private void CheckForItems()
+    {
+        Collider[] hits = Physics.OverlapSphere(_controller.transform.position, _searchRadius);
+        foreach (var hit in hits)
+        {
+            if (hit.CompareTag("Item"))
+            { 
+                _controller.ChangeState(new CollectState(_controller, hit.transform));
+                break;
+            }
         }
     }
 }

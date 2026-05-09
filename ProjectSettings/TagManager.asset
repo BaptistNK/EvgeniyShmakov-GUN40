@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Item
   - Obstacle
+  - CinemachineTarget
+  - Base
   layers:
   - Default
   - TransparentFX
