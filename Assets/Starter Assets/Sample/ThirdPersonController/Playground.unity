@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 110515883}
   - component: {fileID: 110515882}
   - component: {fileID: 110515881}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ GameObject:
   m_Component:
   - component: {fileID: 149147982}
   - component: {fileID: 149147983}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 414197779}
   - component: {fileID: 414197778}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: GameObject (3)
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 456670212}
   - component: {fileID: 456670211}
   - component: {fileID: 456670210}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -997,7 +997,7 @@ GameObject:
   m_Component:
   - component: {fileID: 945639515}
   - component: {fileID: 945639514}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: GameObject (2)
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -1118,7 +1118,7 @@ GameObject:
   - component: {fileID: 1165881611}
   - component: {fileID: 1165881610}
   - component: {fileID: 1165881609}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1357,7 +1357,7 @@ GameObject:
   - component: {fileID: 1419444664}
   - component: {fileID: 1419444663}
   - component: {fileID: 1419444662}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1460,7 +1460,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1544857883}
   - component: {fileID: 1544857882}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: GameObject (1)
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -1543,7 +1543,7 @@ Transform:
   m_GameObject: {fileID: 1563149339}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5984983, y: 3.485755, z: -0.025814772}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1726,7 +1726,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2009760137}
   - component: {fileID: 2009760136}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: GameObject (4)
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -1782,7 +1782,7 @@ GameObject:
   - component: {fileID: 2030078898}
   - component: {fileID: 2030078897}
   - component: {fileID: 2030078896}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3011,7 +3011,7 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: 47afb822c660c0448aa282404e9339ae, type: 3}
   m_Controller: {fileID: 9100000, guid: 336224fbed85fb14e84b041379d5bc69, type: 2}
   m_CullingMode: 1
-  m_UpdateMode: 1
+  m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
