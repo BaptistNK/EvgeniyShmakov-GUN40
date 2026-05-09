@@ -4,13 +4,28 @@ using UnityEngine;
 
 public class CollectState : StateMachineBehaviour
 {
-    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    private BotBrain brain;
+
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        var agent = animator.GetComponent<UnityEngine.AI.NavMeshAgent>();
-        if (agent != null) agent.velocity = Vector3.zero;
+        brain = animator.GetComponent<BotBrain>();
     }
-    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Собрал");
+        if (brain.currentTarget == null) return;
+
+        brain.agent.SetDestination(brain.currentTarget.position);
+
+        if (brain.agent.remainingDistance < 0.6f)
+        {
+            // Логика "сбора"
+            Debug.Log("Предмет собран!");
+            Destroy(brain.currentTarget.gameObject);
+
+            brain.currentTarget = null;
+            animator.SetBool("FoundTarget", false);
+            animator.SetTrigger("CollectionDone");
+        }
     }
 }

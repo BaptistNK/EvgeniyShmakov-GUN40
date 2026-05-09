@@ -4,32 +4,52 @@ using UnityEngine.AI;
 
 public class SearchState : StateMachineBehaviour
 {
-    NavMeshAgent agent;
-    float searchRadius = 10f;
-    float detectionRadius = 5f;
-    LayerMask itemLayer = LayerMask.GetMask("Items");
+    private BotBrain brain;
 
-    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(!agent.pathPending && agent.remainingDistance < 0.5f)
+        brain = animator.GetComponent<BotBrain>();
+
+        // Проверяем, назначен ли агент, если нет — пробуем найти его
+        if (brain != null && brain.agent == null)
+            brain.agent = animator.GetComponent<NavMeshAgent>();
+
+        if (brain != null && brain.agent != null)
+            MoveToRandomPos(brain);
+    }
+
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (brain == null || brain.agent == null) return;
+
+        // Если бот дошел до точки — выбираем новую
+        if (!brain.agent.pathPending && brain.agent.remainingDistance < 0.5f)
         {
-            SetRandomDestination(animator.transform.position);
+            MoveToRandomPos(brain);
         }
-        Collider[] items = Physics.OverlapSphere(animator.transform.position, detectionRadius, itemLayer);
-        if(items.Length > 0)
+
+        // Поиск целей
+        Collider[] targets = Physics.OverlapSphere(brain.transform.position, brain.viewRadius, brain.targetMask);
+        if (targets.Length > 0)
         {
-            animator.SetTrigger("foundItem");
+            // ИСПРАВЛЕНО: берем ТРАНСФОРМ первого элемента массива [0]
+            brain.currentTarget = targets[0].transform;
+            animator.SetBool("FoundTarget", true);
         }
     }
 
-    private void SetRandomDestination(Vector3 currentPosition)
+    void MoveToRandomPos(BotBrain brain)
     {
-        Vector3 randomDir = UnityEngine.Random.insideUnitSphere * searchRadius;
-        randomDir += currentPosition;
+        if (brain.agent == null) return;
+
+        Vector3 randomPos = UnityEngine.Random.insideUnitSphere * 10f;
+        randomPos += brain.transform.position;
+
         NavMeshHit hit;
-        if(NavMesh.SamplePosition(randomDir,out hit, searchRadius, 1))
+        // Ищем ближайшую точку на NavMesh в радиусе 10 метров
+        if (NavMesh.SamplePosition(randomPos, out hit, 10f, NavMesh.AllAreas))
         {
-            agent.SetDestination(hit.position);
+            brain.agent.SetDestination(hit.position);
         }
     }
 }

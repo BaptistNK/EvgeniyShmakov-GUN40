@@ -18,9 +18,9 @@ public class IdleState : StateMachineBehaviour
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _timer += Time.deltaTime;
-        if( _timer > 5f )
+        if( _timer >= 5f )
         {
-            animator.SetTrigger("startSearch");
+            animator.Play("Search");
         }
     }
 }
